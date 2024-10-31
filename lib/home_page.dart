@@ -26,6 +26,14 @@ class _HomePageState extends State<HomePage> {
                     TextField(
                       controller: controller,
                       readOnly: true,
+                      textAlign: TextAlign.right,
+                      style: const TextStyle(
+                        fontSize: 48,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                      ),
                     ),
                   ],
                 ),
