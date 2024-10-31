@@ -410,7 +410,62 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const SizedBox(width: 8),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          final expression = controller.text;
+
+                          final tokens = expression.split(' ');
+
+                          var newTokens = <String>[];
+
+                          if (tokens.contains('*') || tokens.contains('/')) {
+                            for (var i = 1; i < tokens.length - 1; i++) {
+                              if (tokens[i] == '*') {
+                                var firstNumber = num.parse(tokens[i - 1]);
+                                var secondNumber = num.parse(tokens[i + 1]);
+                                var output =
+                                    (firstNumber * secondNumber).toString();
+
+                                newTokens.add(output);
+                                continue;
+                              }
+
+                              if (tokens[i] == '/') {
+                                var firstNumber = num.parse(tokens[i - 1]);
+                                var secondNumber = num.parse(tokens[i + 1]);
+                                var output =
+                                    (firstNumber / secondNumber).toString();
+
+                                newTokens.add(output);
+                                continue;
+                              }
+
+                              if (tokens[i - 1] != '*' ||
+                                  tokens[i + 1] != '*' ||
+                                  tokens[i - 1] != '/' ||
+                                  tokens[i + 1] != '/') {
+                                newTokens.add(tokens[i]);
+                                continue;
+                              }
+                            }
+                          } else {
+                            newTokens = tokens;
+                          }
+
+                          num total = num.parse(newTokens[0]);
+
+                          for (var i = 1; i < newTokens.length - 1; i += 2) {
+                            if (newTokens[i] == '+') {
+                              total += num.parse(newTokens[i + 1]);
+                              continue;
+                            }
+
+                            if (newTokens[i] == '-') {
+                              total -= num.parse(newTokens[i + 1]);
+                            }
+                          }
+
+                          controller.text = total.toString();
+                        },
                         style: TextButton.styleFrom(
                           backgroundColor: Colors.green[300],
                           foregroundColor: Colors.black,
