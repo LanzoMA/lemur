@@ -390,9 +390,12 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(width: 8),
                       IconButton(
                         onPressed: () {
-                          setState(() {
-                            controller.text = '';
-                          });
+                          if (controller.text.isNotEmpty) {
+                            setState(() {
+                              controller.text = controller.text
+                                  .substring(0, controller.text.length - 1);
+                            });
+                          }
                         },
                         style: TextButton.styleFrom(
                           backgroundColor: Colors.grey[600],
