@@ -103,8 +103,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Center(
-          child: Column(children: [
+        child: Column(
+          children: [
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -114,10 +114,11 @@ class _HomePageState extends State<HomePage> {
                     readOnly: true,
                     textAlign: TextAlign.right,
                     style: const TextStyle(
-                      fontSize: 48,
+                      fontSize: 64,
                       fontWeight: FontWeight.bold,
                     ),
                     decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.all(0),
                       border: InputBorder.none,
                     ),
                   ),
@@ -125,6 +126,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             GridView.count(
+              padding: const EdgeInsets.all(0),
               crossAxisCount: 4,
               crossAxisSpacing: 8.0,
               mainAxisSpacing: 8.0,
@@ -136,6 +138,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text = '';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.surfaceBright,
                   text: 'AC',
                 ),
                 KeypadButton(
@@ -144,6 +147,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += '(';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.surfaceBright,
                   text: '(',
                 ),
                 KeypadButton(
@@ -152,6 +156,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += ')';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.surfaceBright,
                   text: ')',
                 ),
                 KeypadButton(
@@ -160,6 +165,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += ' / ';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.primary,
                   text: '/',
                 ),
                 KeypadButton(
@@ -168,6 +174,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += '7';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.surface,
                   text: '7',
                 ),
                 KeypadButton(
@@ -176,6 +183,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += '8';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.surface,
                   text: '8',
                 ),
                 KeypadButton(
@@ -184,6 +192,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += '9';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.surface,
                   text: '9',
                 ),
                 KeypadButton(
@@ -192,6 +201,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += ' * ';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.primary,
                   text: '*',
                 ),
                 KeypadButton(
@@ -200,6 +210,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += '4';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.surface,
                   text: '4',
                 ),
                 KeypadButton(
@@ -208,6 +219,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += '5';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.surface,
                   text: '5',
                 ),
                 KeypadButton(
@@ -216,6 +228,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += '6';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.surface,
                   text: '6',
                 ),
                 KeypadButton(
@@ -224,6 +237,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += ' - ';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.primary,
                   text: '-',
                 ),
                 KeypadButton(
@@ -232,6 +246,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += '1';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.surface,
                   text: '1',
                 ),
                 KeypadButton(
@@ -240,6 +255,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += '2';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.surface,
                   text: '2',
                 ),
                 KeypadButton(
@@ -248,6 +264,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += '3';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.surface,
                   text: '3',
                 ),
                 KeypadButton(
@@ -256,6 +273,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += ' + ';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.primary,
                   text: '+',
                 ),
                 KeypadButton(
@@ -264,6 +282,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += '0';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.surface,
                   text: '0',
                 ),
                 KeypadButton(
@@ -272,6 +291,7 @@ class _HomePageState extends State<HomePage> {
                       controller.text += '.';
                     });
                   },
+                  backgroundColor: Theme.of(context).colorScheme.surface,
                   text: '.',
                 ),
                 IconButton(
@@ -283,9 +303,10 @@ class _HomePageState extends State<HomePage> {
                       });
                     }
                   },
+                  iconSize: 40.0,
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.grey[600],
-                    foregroundColor: Colors.black,
+                    foregroundColor: Colors.white,
+                    backgroundColor: Theme.of(context).colorScheme.surface,
                     fixedSize: Size.square(keypadButtonSize),
                     textStyle: const TextStyle(
                       fontSize: 32,
@@ -296,11 +317,12 @@ class _HomePageState extends State<HomePage> {
                 ),
                 KeypadButton(
                   onPressed: evaluateExpression,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
                   text: '=',
                 ),
               ],
             ),
-          ]),
+          ],
         ),
       ),
     );
